@@ -1,0 +1,8 @@
+RESPONSEFILE_VERSION=2.2.1.0.0
+FROM_LOCATION="/home/oracle/Disk1/stage/products.xml"
+ORACLE_HOME="/home/oracle/tuxhome"
+ORACLE_HOME_NAME="tuxhome"
+INSTALL_TYPE="Custom Install"
+DEPENDENCY_LIST={"tuxedoServer:12.2.2.0.0","atmiClient:12.2.2.0.0"}
+TLISTEN_PORT="3050"
+TLISTEN_PASSWORD="oracle"
