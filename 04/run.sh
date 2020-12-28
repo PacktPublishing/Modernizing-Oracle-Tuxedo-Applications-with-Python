@@ -11,7 +11,8 @@ cat ubbconfig.in \
 
 tmloadcf -y ubbconfig
 tmboot -y
-echo 'echo -e "SRVCNM\t.TMIB\nTA_CLASS\tT_DOMAIN\nTA_OPERATION\tGET\n\n" | ud32'
+echo -e "SRVCNM\t.TMIB\nTA_CLASS\tT_DOMAIN\nTA_OPERATION\tGET\n\n" | ud32
+echo -e "SRVCNM\t.TMIB\nTA_CLASS\tT_DOMAIN\nTA_OPERATION\tGET\n\n" | python3 ud32.py
 python3 ta_class.py
 python3 impexp.py
 
