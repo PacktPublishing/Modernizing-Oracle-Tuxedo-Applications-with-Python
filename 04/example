@@ -1,0 +1,13 @@
+*base 10000
+PARAM          1  fml32
+NAME           2  string
+VALUE          3  string
+
+AMOUNT         4  long
+CURRENCY       5  string
+MERCHANT_NAME  6  string
+CARD_NETWORKS  7  string
+
+SAMENAME       10 string
+SAMENAME       11 string
+SAMEID         11 string
