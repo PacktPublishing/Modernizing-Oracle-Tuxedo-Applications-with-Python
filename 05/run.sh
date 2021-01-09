@@ -11,12 +11,8 @@ cat ubbconfig.in \
 
 tmloadcf -y ubbconfig
 tmboot -y
-echo -e "SRVCNM\t.TMIB\nTA_CLASS\tT_DOMAIN\nTA_OPERATION\tGET\n\n" | ud32
-echo -e "SRVCNM\t.TMIB\nTA_CLASS\tT_DOMAIN\nTA_OPERATION\tGET\n\n" | python3 ud32.py
-python3 client.py
-python3 ta_class.py
-python3 impexp.py
-python3 boolexpr.py
-python3 fml32.py  
-bash
+echo -e "SRVCNM\tUNADVERTISED\n" | ud32
+echo -e "SRVCNM\tPING_1\n" | ud32
+echo -e "SRVCNM\tPING_2\n" | ud32
+echo -e "SRVCNM\tPING_1\n\n\n\n\n\n\n\n" | ud32
 tmshutdown -y
