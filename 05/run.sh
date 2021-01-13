@@ -9,10 +9,12 @@ cat ubbconfig.in \
 | sed s:@UNAME@:`uname -n`:g \
 | sed s:@CURDIR@:`pwd`:g > ubbconfig
 
+tmipcrm -y
 tmloadcf -y ubbconfig
 tmboot -y
 echo -e "SRVCNM\tUNADVERTISED\n" | ud32
 echo -e "SRVCNM\tPING_1\n" | ud32
 echo -e "SRVCNM\tPING_2\n" | ud32
-echo -e "SRVCNM\tPING_1\n\n\n\n\n\n\n\n" | ud32
+echo -e "SRVCNM\tPING_1\n\n\n\n" | ud32
+echo -e "SRVCNM\tWORK\n" | ud32
 tmshutdown -y

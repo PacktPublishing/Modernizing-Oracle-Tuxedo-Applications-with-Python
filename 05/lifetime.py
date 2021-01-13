@@ -2,6 +2,7 @@
 import sys
 import tuxedo as t
 
+
 class Server:
     def tpsvrinit(self, argv):
         t.userlog(f"Starting server {argv}")
@@ -19,5 +20,6 @@ class Server:
 
     def TOUPPER(self, req):
         return t.tpreturn(t.TPSUCCESS, 0, req.upper())
+
 
 t.run(Server(), sys.argv)
