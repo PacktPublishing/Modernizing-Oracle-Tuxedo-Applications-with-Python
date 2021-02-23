@@ -1,4 +1,4 @@
-FROM oraclelinux:8
+FROM oraclelinux:8.2
 
 RUN yum -y install oracle-release-el8 && \
     yum -y install \
