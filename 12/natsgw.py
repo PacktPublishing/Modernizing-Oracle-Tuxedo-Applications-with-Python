@@ -17,18 +17,12 @@ async def on_message(msg):
     svcname = msg.subject
     data = req["data"]
 
-    if req.get("flags", "") == "TPNOREPLY":
-        t.tpacall(svcname, data, t.TPNOREPLY)
-        return
-
     try:
         rval, rcode, data = await loop.run_in_executor(
             None, t.tpcall, svcname, data
         )
-        exc = None
-    except t.XatmiException as e:
+    except t.XatmiException:
         rval, rcode, data = t.TPESVCFAIL, 0, None
-        exc = e
 
     await nc.publish(
         msg.reply,
@@ -39,7 +33,6 @@ async def on_message(msg):
                 else "TPSUCCESS",
                 "rcode": rcode,
                 "data": data,
-                "exc": exc,
             }
         ).encode(),
     )
@@ -48,15 +41,6 @@ async def on_message(msg):
 async def on_service(name, data, flags):
     if flags & t.TPTRAN:
         return (t.TPFAIL, 0, data)
-
-    if flags & t.TPNOREPLY:
-        await nc.publish(
-            name,
-            json.dumps(
-                {"flags": "TPNOREPLY", "data": data}
-            ).encode(),
-        )
-        return (t.TPSUCCESS, 0, data)
 
     try:
         msg = await nc.request(
@@ -71,7 +55,7 @@ async def on_service(name, data, flags):
             res["data"],
         )
     except asyncio.TimeoutError:
-        pass
+        return (t.TPFAIL, 0, data)
 
 
 class Server:

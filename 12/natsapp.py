@@ -24,7 +24,7 @@ async def NATS2(msg):
     data = req["data"]
     if "TA_STATUS" not in data:
         data["TA_STATUS"] = []
-    data["TA_STATUS"].append("Hello from NATS1")
+    data["TA_STATUS"].append("Hello from NATS2")
 
     msg2 = await nc.request(
         "TUX1",
