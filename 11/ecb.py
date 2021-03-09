@@ -32,14 +32,6 @@ class Server:
         else:
             return t.tpreturn(t.TPSUCCESS, 0, data)
 
-    def GETRATES_LATER(self, data):
-        t.tpenqueue("QSPACE", "GETRATES", data)
-        return t.tpreturn(t.TPSUCCESS, 0, {})
-
-    def GETRATES_DONE(self, data):
-        t.userlog(data["TA_STATE"])
-        return t.tpreturn(t.TPSUCCESS, 0, {})
-
 
 if __name__ == "__main__":
     t.run(Server(), sys.argv)

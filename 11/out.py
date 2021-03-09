@@ -12,8 +12,12 @@ class Server:
         t.tpadvertise("TOUPPER")
         self.lock = threading.Lock()
         self.counter = 0
-        self.sock = socket.create_connection(("127.0.0.1", 8765))
-        threading.Thread(target=self.ping, daemon=True).start()
+        self.sock = socket.create_connection(
+            ("127.0.0.1", 8765)
+        )
+        threading.Thread(
+            target=self.ping, daemon=True
+        ).start()
         return 0
 
     def ping(self):

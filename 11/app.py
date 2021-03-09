@@ -14,7 +14,10 @@ class Server:
         t.tpenqueue(
             "QSPACE",
             "GETRATES",
-            t.TPQCTL(replyqueue="GETRATES_DONE", flags=t.TPQREPLYQ),
+            t.TPQCTL(
+                replyqueue="GETRATES_DONE",
+                flags=t.TPQREPLYQ,
+            ),
             data,
         )
         return t.tpreturn(t.TPSUCCESS, 0, {})
