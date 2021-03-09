@@ -36,5 +36,4 @@ RUN pip3 install tuxedo
 
 USER oracle
 
-EXPOSE 5020
 WORKDIR /home/oracle
