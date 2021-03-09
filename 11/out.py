@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
-import socket
-import sys
-import threading
-import time
+import socket, sys, threading, time
 import tuxedo as t
 
 
@@ -11,10 +8,8 @@ class Server:
     def tpsvrinit(self, args):
         t.tpadvertise("TOUPPER")
         self.lock = threading.Lock()
-        self.counter = 0
-        self.sock = socket.create_connection(
-            ("127.0.0.1", 8765)
-        )
+        self.sock = socket.create_connection((
+                    "127.0.0.1", 8765))
         threading.Thread(
             target=self.ping, daemon=True
         ).start()
