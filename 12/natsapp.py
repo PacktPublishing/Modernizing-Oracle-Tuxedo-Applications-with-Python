@@ -20,11 +20,8 @@ async def NATS1(msg):
 
 
 async def NATS2(msg):
-    req = json.loads(msg.data.decode())
-    data = req["data"]
-    if "TA_STATUS" not in data:
-        data["TA_STATUS"] = []
-    data["TA_STATUS"].append("Hello from NATS2")
+    data = json.loads(msg.data.decode())["data"]
+    data["TA_STATUS"] = ["Hello from NATS2"]
 
     msg2 = await nc.request(
         "TUX1",
